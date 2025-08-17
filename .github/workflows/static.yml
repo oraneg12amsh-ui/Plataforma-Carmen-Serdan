@@ -1,25 +1,20 @@
-            - nombre: Configurar el entorno Node.js
-  usos: acciones/setup-node@v3.9.1
+                   - nombre: Caché
+  usos: acciones/cache@v4.2.4
   con:
-    # Establezca always-auth en npmrc.
-    always-auth: # opcional, el valor predeterminado es falso
-    Especificación de la versión a utilizar. Ejemplos: 12.x, 10.15.1, >=10.15.0.
-    node-version: # opcional
-    Archivo que contiene la especificación de la versión a utilizar. Ejemplos: .nvmrc, .node-version, .tool-versions.
-    archivo-versión-nodo: # opcional
-    # Arquitectura de destino que usará Node. Ejemplos: x86, x64. Se usará la arquitectura del sistema por defecto.
-    arquitectura: # opcional
-    # Configure esta opción si desea que la acción busque la última versión disponible que satisfaga la especificación de la versión.
-    check-latest: # opcional
-    Registro opcional para la autenticación. Se establecerá el registro en archivos .npmrc y .yarnrc a nivel de proyecto y se configurará la autenticación para leer desde env.NODE_AUTH_TOKEN.
-    URL del registro: # opcional
-    # Ámbito opcional para la autenticación en registros con ámbito. Se recurrirá al propietario del repositorio al usar el registro de paquetes de GitHub (https://npm.pkg.github.com/).
-    alcance: # opcional
-    # Se usa para extraer distribuciones de nodos de node-versions. Dado que hay un valor predeterminado, normalmente no lo proporciona el usuario. Al ejecutar esta acción en github.com, el valor predeterminado es suficiente. Al ejecutar en GHES, puede pasar un token de acceso personal a github.com si experimenta limitaciones de velocidad.
-    token: # opcional, el valor predeterminado es ${{ github.server_url == 'https://github.com' && github.token || '' }}
-    # Se utiliza para especificar un gestor de paquetes para el almacenamiento en caché en el directorio predeterminado. Valores admitidos: npm, yarn, pnpm.
-    caché: # opcional
-    # Se utiliza para especificar la ruta a un archivo de dependencia: package-lock.json, yarn.lock, etc. Admite caracteres comodín o una lista de nombres de archivos para almacenar en caché múltiples dependencias.
-    ruta de dependencia de caché: # opcional
-    
+    # Una lista de archivos, directorios y patrones comodín para almacenar en caché y restaurar
+    camino:
+    # Una clave explícita para restaurar y guardar el caché
+    llave:
+    # Una cadena multilínea ordenada que enumera las claves con prefijo coincidente, que se utilizan para restaurar la caché obsoleta si no se produce un acierto de caché para la clave. Nota: `cache-hit` devuelve falso en este caso.
+    restaurar-claves: # opcional
+    # El tamaño del fragmento utilizado para dividir archivos grandes durante la carga, en bytes
+    tamaño del fragmento de carga: # opcional
+    # Un valor booleano opcional, cuando está habilitado, permite que los ejecutores de Windows guarden o restauren cachés que se pueden restaurar o guardar respectivamente en otras plataformas
+    enableCrossOsArchive: # opcional, el valor predeterminado es falso
+    # El flujo de trabajo falla si no se encuentra la entrada de caché
+    fail-on-cache-miss: # opcional, el valor predeterminado es falso
+    # Verifica si existe una entrada de caché para las entradas dadas (clave, claves de restauración) sin descargar el caché
+    solo búsqueda: # opcional, el valor predeterminado es falso
+    # Ejecute el paso posterior para guardar el caché incluso si falla otro paso anterior
+    guardar siempre: # opcional, el valor predeterminado es falso
           
